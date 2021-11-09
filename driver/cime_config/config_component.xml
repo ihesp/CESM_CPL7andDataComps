@@ -11,7 +11,10 @@
 
   <entry id="COMP_CLASSES">
     <type>char</type>
-    <default_value>CPL,ATM,LND,ICE,OCN,ROF,GLC,WAV,IAC,ESP</default_value>
+    <default_value>CPL,ATM,LND,ICE,OCN,ROF,GLC,WAV,ESP,IAC</default_value>
+    <values>
+      <value cime_model="ihesp">CPL,ATM,LND,ICE,OCN,ROF,GLC,WAV</value>
+    </values>
     <file>env_case.xml</file>
     <group>case_comp</group>
     <desc>List of component classes supported by this driver</desc>
@@ -1617,7 +1620,7 @@
     <desc>rof2ocn flux mapping file decomp type</desc>
   </entry>
 
-  <entry id="ROF2OCN_LIQ_RMAPNAME">
+  <entry id="ROF2OCN_RMAPNAME">
     <type>char</type>
     <default_value>idmap</default_value>
     <group>run_domain</group>
@@ -1625,24 +1628,7 @@
     <desc>rof2ocn runoff mapping file</desc>
   </entry>
 
-  <entry id="ROF2OCN_LIQ_RMAPTYPE">
-    <type>char</type>
-    <valid_values>X,Y</valid_values>
-    <default_value>Y</default_value>
-    <group>run_domain</group>
-    <file>env_run.xml</file>
-    <desc>rof2ocn runoff mapping file decomp type</desc>
-  </entry>
-
-  <entry id="ROF2OCN_ICE_RMAPNAME">
-    <type>char</type>
-    <default_value>idmap</default_value>
-    <group>run_domain</group>
-    <file>env_run.xml</file>
-    <desc>rof2ocn runoff mapping file</desc>
-  </entry>
-
-  <entry id="ROF2OCN_ICE_RMAPTYPE">
+  <entry id="ROF2OCN_RMAPTYPE">
     <type>char</type>
     <valid_values>X,Y</valid_values>
     <default_value>Y</default_value>
@@ -2207,8 +2193,6 @@
       <value compclass="ICE"> $MAX_MPITASKS_PER_NODE</value>
       <value compclass="ROF"> $MAX_MPITASKS_PER_NODE</value>
       <value compclass="LND"> $MAX_MPITASKS_PER_NODE</value>
-      <value compclass="ESP"> $MAX_MPITASKS_PER_NODE</value>
-      <value compclass="IAC"> $MAX_MPITASKS_PER_NODE</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2225,8 +2209,6 @@
       <value compclass="ICE"> 0</value>
       <value compclass="ROF"> 0</value>
       <value compclass="LND"> 0</value>
-      <value compclass="ESP"> 0</value>
-      <value compclass="IAC"> 0</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2244,8 +2226,6 @@
       <value compclass="ICE">1</value>
       <value compclass="ROF">1</value>
       <value compclass="LND">1</value>
-      <value compclass="ESP">1</value>
-      <value compclass="IAC">1</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2263,8 +2243,6 @@
       <value compclass="ICE">0</value>
       <value compclass="ROF">0</value>
       <value compclass="LND">0</value>
-      <value compclass="ESP">0</value>
-      <value compclass="IAC">0</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2293,8 +2271,6 @@
       <value compclass="ICE">1</value>
       <value compclass="ROF">1</value>
       <value compclass="LND">1</value>
-      <value compclass="ESP">1</value>
-      <value compclass="IAC">1</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2314,8 +2290,6 @@
       <value compclass="ICE">concurrent</value>
       <value compclass="ROF">concurrent</value>
       <value compclass="LND">concurrent</value>
-      <value compclass="ESP">concurrent</value>
-      <value compclass="IAC">concurrent</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2333,8 +2307,6 @@
       <value compclass="ICE">1</value>
       <value compclass="ROF">1</value>
       <value compclass="LND">1</value>
-      <value compclass="ESP">1</value>
-      <value compclass="IAC">1</value>
     </values>
     <group>mach_pes</group>
     <file>env_mach_pes.xml</file>
@@ -2538,8 +2510,6 @@
       <value compclass="ICE">default</value>
       <value compclass="ROF">default</value>
       <value compclass="LND">default</value>
-      <value compclass="ESP">default</value>
-      <value compclass="IAC">default</value>
     </values>
   </entry>
 
@@ -2560,8 +2530,6 @@
       <value compclass="ICE">64bit_offset</value>
       <value compclass="ROF">64bit_offset</value>
       <value compclass="LND">64bit_offset</value>
-      <value compclass="ESP">64bit_offset</value>
-      <value compclass="IAC">64bit_offset</value>
     </values>
   </entry>
 
@@ -2582,8 +2550,6 @@
       <value compclass="ICE">$MAX_MPITASKS_PER_NODE</value>
       <value compclass="ROF">$MAX_MPITASKS_PER_NODE</value>
       <value compclass="LND">$MAX_MPITASKS_PER_NODE</value>
-      <value compclass="ESP">$MAX_MPITASKS_PER_NODE</value>
-      <value compclass="IAC">$MAX_MPITASKS_PER_NODE</value>
     </values>
   </entry>
 
@@ -2602,8 +2568,6 @@
       <value compclass="ICE">$PIO_VERSION</value>
       <value compclass="ROF">$PIO_VERSION</value>
       <value compclass="LND">$PIO_VERSION</value>
-      <value compclass="ESP">$PIO_VERSION</value>
-      <value compclass="IAC">$PIO_VERSION</value>
     </values>
   </entry>
 
@@ -2621,8 +2585,6 @@
       <value component="ICE">1</value>
       <value component="ROF">1</value>
       <value component="LND">1</value>
-      <value component="ESP">1</value>
-      <value component="IAC">1</value>
     </values>
   </entry>
 
@@ -2643,8 +2605,6 @@
       <value compclass="ICE">-99</value>
       <value compclass="ROF">-99</value>
       <value compclass="LND">-99</value>
-      <value compclass="ESP">-99</value>
-      <value compclass="IAC">-99</value>
     </values>
   </entry>
 

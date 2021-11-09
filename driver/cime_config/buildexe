@@ -34,13 +34,15 @@ def _main_func():
         num_esp   = case.get_value("NUM_COMP_INST_ESP")
         ocn_model = case.get_value("COMP_OCN")
         atm_model = case.get_value("COMP_ATM")
+        cime_model = case.get_value("MODEL")
         gmake_opts = get_standard_makefile_args(case)
         blddir = os.path.join(case.get_value("EXEROOT"),"cpl","obj")
         
     if ocn_model == 'mom' or atm_model == "ufsatm":
         gmake_opts += "USE_FMS=TRUE"
-
-
+    if cime_model == 'ihesp':
+        gmake_opts += " LNDLIB=liblnd.a ESP_PRESENT=FALSE IAC_PRESENT=FALSE"
+        
     expect((num_esp is None) or (int(num_esp) == 1), "ESP component restricted to one instance")
 
 

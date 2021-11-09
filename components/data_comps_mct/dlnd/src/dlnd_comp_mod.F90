@@ -53,23 +53,21 @@ module dlnd_comp_mod
   !--------------------------------------------------------------------------
   !--- names of fields ---
   integer(IN),parameter :: fld_len = 12       ! max character length of fields in avofld & avifld
-  integer(IN),parameter :: nflds_nosnow = 28
+  integer(IN),parameter :: nflds_nosnow = 22
 
   ! fields other than snow fields:
   character(fld_len),parameter  :: avofld_nosnow(1:nflds_nosnow) = &
        (/ "Sl_t        ","Sl_tref     ","Sl_qref     ","Sl_avsdr    ","Sl_anidr    ", &
        "Sl_avsdf    ","Sl_anidf    ","Sl_snowh    ","Fall_taux   ","Fall_tauy   ", &
        "Fall_lat    ","Fall_sen    ","Fall_lwup   ","Fall_evap   ","Fall_swnet  ", &
-       "Sl_landfrac ","Sl_fv       ","Sl_ram1     ","Flrl_demand ",                &
-        "Flrl_rofsur ","Flrl_rofgwl ","Flrl_rofsub ","Flrl_rofdto ","Flrl_rofi   ", &
+       "Sl_landfrac ","Sl_fv       ","Sl_ram1     ",                               &
        "Fall_flxdst1","Fall_flxdst2","Fall_flxdst3","Fall_flxdst4"                 /)
 
   character(fld_len),parameter  :: avifld_nosnow(1:nflds_nosnow) = &
        (/ "t           ","tref        ","qref        ","avsdr       ","anidr       ", &
        "avsdf       ","anidf       ","snowh       ","taux        ","tauy        ", &
        "lat         ","sen         ","lwup        ","evap        ","swnet       ", &
-       "lfrac       ","fv          ","ram1        ","demand      ",                &
-        "rofsur      ","rofgwl      ","rofsub      ","rofdto      ","rofi        ", &
+       "lfrac       ","fv          ","ram1        ",                               &
        "flddst1     ","flxdst2     ","flxdst3     ","flxdst4     "                 /)
 
   integer(IN), parameter :: nflds_snow  = 3   ! number of snow fields in each elevation class
@@ -133,7 +131,6 @@ CONTAINS
     integer(IN)        :: nflds_glc_nec  ! number of snow fields separated by elev class
     integer(IN)        :: field_num ! field number
     character(nec_len) :: nec_str   ! elevation class, as character string
-    character(*), parameter :: domain_fracname_unset = 'null'
 
     !--- formats ---
     character(*), parameter :: F00   = "('(dlnd_comp_init) ',8a)"
@@ -170,21 +167,12 @@ CONTAINS
     if (scmmode) then
        if (my_task == master_task) &
             write(logunit,F05) ' scm lon lat = ',scmlon,scmlat
-       if (domain_fracname == domain_fracname_unset) then
-          call shr_strdata_init(SDLND,mpicom,compid,name='lnd', &
-               scmmode=scmmode,scmlon=scmlon,scmlat=scmlat, calendar=calendar)
-       else
-          call shr_strdata_init(SDLND,mpicom,compid,name='lnd', &
-               scmmode=scmmode,scmlon=scmlon,scmlat=scmlat, calendar=calendar, &
-               dmodel_domain_fracname_from_stream=domain_fracname)
-       end if
+       call shr_strdata_init(SDLND,mpicom,compid,name='lnd', &
+            scmmode=scmmode,scmlon=scmlon,scmlat=scmlat, calendar=calendar, &
+            dmodel_domain_fracname_from_stream=domain_fracname)
     else
-       if (domain_fracname == domain_fracname_unset) then
-          call shr_strdata_init(SDLND,mpicom,compid,name='lnd', calendar=calendar)
-       else
-          call shr_strdata_init(SDLND,mpicom,compid,name='lnd', calendar=calendar, &
-               dmodel_domain_fracname_from_stream=domain_fracname)
-       end if
+       call shr_strdata_init(SDLND,mpicom,compid,name='lnd', calendar=calendar, &
+            dmodel_domain_fracname_from_stream=domain_fracname)
     endif
 
     if (my_task == master_task) then
