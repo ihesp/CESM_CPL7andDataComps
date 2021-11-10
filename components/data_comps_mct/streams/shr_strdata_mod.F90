@@ -365,7 +365,7 @@ module shr_strdata_mod
                write(logunit,F00) ' writing ',trim(SDAT%fillwrit(n))
                call shr_sys_flush(logunit)
              endif
-             call shr_mct_sMatWritednc(SDAT%sMatPf(n)%Matrix,SDAT%pio_subsystem,sdat%io_type,  SDAT%fillwrit(n),compid,mpicom)
+             call shr_mct_sMatWritednc(SDAT%sMatPf(n)%Matrix,SDAT%pio_subsystem,sdat%io_type, PIO_64BIT_DATA,  SDAT%fillwrit(n),compid,mpicom)
            endif
         else
            if (my_task == master_task) then
@@ -395,7 +395,7 @@ module shr_strdata_mod
                write(logunit,F00) ' writing ',trim(SDAT%mapwrit(n))
                call shr_sys_flush(logunit)
              endif
-             call shr_mct_sMatWritednc(SDAT%sMatPs(n)%Matrix,sdat%pio_subsystem,sdat%io_type,SDAT%mapwrit(n),compid,mpicom)
+             call shr_mct_sMatWritednc(SDAT%sMatPs(n)%Matrix,sdat%pio_subsystem,sdat%io_type,PIO_64BIT_DATA,SDAT%mapwrit(n),compid,mpicom)
            endif
         else
            if (my_task == master_task) then

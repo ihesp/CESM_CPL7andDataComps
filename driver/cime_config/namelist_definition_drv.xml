@@ -43,7 +43,7 @@
   <!-- =========================== -->
   <!-- group cime_driver_inst              -->
   <!-- =========================== -->
-
+<!--
   <entry id="ninst_driver" modify_via_xml="NINST_MAX">
     <type>integer</type>
     <category>cime_driver_inst</category>
@@ -56,7 +56,7 @@
       <value MULTI_DRIVER=".true.">$NINST_MAX</value>
     </values>
   </entry>
-
+-->
   <!-- =========================== -->
   <!-- group seq_cplflds_inparm    -->
   <!-- =========================== -->
@@ -123,7 +123,7 @@
     </values>
   </entry>
 
-  <entry id="flds_bgc_oi">
+<!--  <entry id="flds_bgc_oi">
     <type>logical</type>
     <category>seq_flds</category>
     <group>seq_cplflds_inparm</group>
@@ -148,7 +148,7 @@
       <value>$FLDS_WISO</value>
     </values>
   </entry>
-
+-->
   <entry  id="glc_nec" modify_via_xml="GLC_NEC">
     <type>integer</type>
     <category>seq_flds</category>
@@ -160,7 +160,7 @@
       <value>$GLC_NEC</value>
     </values>
   </entry>
-
+<!--
   <entry id="ice_ncat" modify_via_xml="ICE_NCAT">
     <type>integer</type>
     <category>seq_flds</category>
@@ -196,23 +196,9 @@
     <values>
       <value>.false.</value>
       <value cime_model='cesm'>.true.</value>
-      <value cime_model='ihesp'>.true.</value>
     </values>
   </entry>
-
-  <entry id="rof_heat">
-    <type>logical</type>
-    <category>seq_flds</category>
-    <group>seq_cplflds_inparm</group>
-    <desc>
-      If set to .true., adds fields needed to calculate heat in the river model
-    </desc>
-    <values>
-      <value>.false.</value>
-      <value cime_model='e3sm'>.true.</value>
-    </values>
-  </entry>
-
+-->
   <!-- =========================== -->
   <!-- -group seq_cplflds_custom   -->
   <!-- =========================== -->
@@ -245,20 +231,19 @@
   <!-- =========================== -->
   <!--  group seq_infodata_inparm  -->
   <!-- =========================== -->
-
+<!--
   <entry id="cime_model" modify_via_xml="CIME_MODEL">
     <type>char</type>
     <category>expdef</category>
     <group>seq_infodata_inparm</group>
-    <valid_values>e3sm,cesm,ihesp</valid_values>
+    <valid_values>e3sm,cesm</valid_values>
     <desc>cime model</desc>
     <values>
       <value cime_model='cesm'>cesm</value>
       <value cime_model='e3sm'>e3sm</value>
-      <value cime_model='ihesp'>ihesp</value>
     </values>
   </entry>
-
+-->
   <entry id="aqua_planet">
     <type>logical</type>
     <category>expdef</category>
@@ -318,7 +303,7 @@
       <value>$MODEL_VERSION</value>
     </values>
   </entry>
-
+<!--
   <entry id="model_doi_url" modify_via_xml="MODEL_DOI_URL">
     <type>char</type>
     <category>expdef</category>
@@ -330,7 +315,7 @@
       <value>$MODEL_DOI_URL</value>
     </values>
   </entry>
-
+-->
   <entry id="username" modify_via_xml="USER">
     <type>char</type>
     <category>expdef</category>
@@ -456,7 +441,6 @@
     <values>
       <value>fixed_year</value>
       <value iyear='HIST' cime_model='cesm'>variable_year</value>
-      <value iyear='HIST' cime_model='ihesp'>variable_year</value>
     </values>
   </entry>
 
@@ -469,12 +453,9 @@
     </desc>
     <values>
       <value>1990</value>
-      <value iyear="1850" cime_model="cesm">1850</value>
-      <value iyear="2000" cime_model="cesm">2000</value>
-      <value iyear='HIST' cime_model='cesm'>1850</value>
-      <value iyear="1850" cime_model="ihesp">1850</value>
-      <value iyear="2000" cime_model="ihesp">2000</value>
-      <value iyear='HIST' cime_model='ihesp'>1850</value>
+      <value iyear="1850">1850</value>
+      <value iyear="2000">2000</value>
+      <value iyear='HIST'>1850</value>
     </values>
   </entry>
 
@@ -487,12 +468,9 @@
     </desc>
     <values>
       <value>1990</value>
-      <value iyear="1850" cime_model="cesm">1850</value>
-      <value iyear="2000" cime_model="cesm">2000</value>
-      <value iyear='HIST' cime_model='cesm'>1850</value>
-      <value iyear="1850" cime_model="ihesp">1850</value>
-      <value iyear="2000" cime_model="ihesp">2000</value>
-      <value iyear='HIST' cime_model='ihesp'>1850</value>
+      <value iyear="1850">1850</value>
+      <value iyear="2000">2000</value>
+      <value iyear='HIST'>1850</value>
     </values>
   </entry>
 
@@ -534,22 +512,7 @@
       <value>1.e36</value>
     </values>
   </entry>
-
-  <entry id="constant_zenith_deg">
-    <type>real</type>
-    <category>orbital</category>
-    <group>seq_infodata_inparm</group>
-    <desc>
-      Constant solar zenith angle value in degrees for idealized configurations
-      such as radiative-convective equilibrium experiments. This is disabled when 
-      the value is less than 0
-      Default: -1
-    </desc>
-    <values>
-      <value>-1</value>
-    </values>
-  </entry>
-
+<!--
   <entry id="wv_sat_scheme">
     <type>char</type>
     <category>wv_sat</category>
@@ -621,7 +584,7 @@
       <value>$TFREEZE_SALTWATER_OPTION</value>
     </values>
   </entry>
-
+-->
   <entry id="flux_epbal" modify_via_xml="CPL_EPBAL">
     <type>char</type>
     <category>control</category>
@@ -646,7 +609,7 @@
       <value>$CPL_ALBAV</value>
     </values>
   </entry>
-
+<!--
   <entry id="glc_renormalize_smb">
     <type>char</type>
     <category>control</category>
@@ -679,7 +642,7 @@
       <value>on_if_glc_coupled_fluxes</value>
     </values>
   </entry>
-
+-->
   <entry id="wall_time_limit">
     <type>real</type>
     <category>control</category>
@@ -706,7 +669,7 @@
       <value>month</value>
     </values>
   </entry>
-
+<!--
   <entry id="coldair_outbreak_mod">
     <type>logical</type>
     <category>control</category>
@@ -719,9 +682,6 @@
       <value cime_model='cesm'>.true.</value>
       <value cime_model='cesm' atm_grid="T62">.false.</value>
       <value cime_model='cesm' atm_grid="TL319">.false.</value>
-      <value cime_model='ihesp'>.true.</value>
-      <value cime_model='ihesp' atm_grid="T62">.false.</value>
-      <value cime_model='ihesp' atm_grid="TL319">.false.</value>
     </values>
   </entry>
 
@@ -736,22 +696,7 @@
      <values>
       <value>.false.</value>
      </values>
-  </entry>
-
-  <entry id="ocn_surface_flux_scheme">
-     <type>integer</type>
-     <category>control</category>
-     <group>seq_infodata_inparm</group>
-     <desc>
-      0: standard surface flux calculation as in E3SMv1 
-      1: COAREv3.0 flux computation (Fairall et al., 2003)
-      2: University of Arizona algorithm (Zeng et al., 1998)
-      default: 0
-     </desc>
-     <values>
-      <value>0</value>
-     </values>
-  </entry>
+   </entry>
 
   <entry id="flux_convergence">
     <type>real</type>
@@ -762,11 +707,11 @@
       Setting this to zero will always do flux_max_iteration
     </desc>
     <values>
+-->
       <!-- the value for f09 grids is maintained as 0.0 for compatibility with cmip6 experiments
            the 1% convergence criteria improves performance of the atm ocn flux calculation in shr_flux_mod.F90 -->
-      <value cime_model='cesm'>0.01</value>
+<!--      <value cime_model='cesm'>0.01</value>
       <value cime_model='cesm' atm_grid="0.9x1.25">0.0</value>
-      <value cime_model='ihesp'>0.01</value>
       <value cime_model='e3sm'>0.0</value>
     </values>
   </entry>
@@ -780,11 +725,10 @@
     </desc>
     <values>
       <value cime_model='cesm'>5</value>
-      <value cime_model='ihesp'>5</value>
       <value cime_model='e3sm'>2</value>
     </values>
   </entry>
-
+-->
   <entry id="atm_gnam" modify_via_xml="ATM_GRID">
     <type>char</type>
     <category>mapping</category>
@@ -1127,7 +1071,7 @@
       <value>.false.</value>
     </values>
   </entry>
-
+<!--
   <entry id="histaux_a2x1hr">
     <type>logical</type>
     <category>history</category>
@@ -1153,7 +1097,7 @@
       <value>.false.</value>
     </values>
   </entry>
-
+-->
   <entry id="histaux_a2x3hr">
     <type>logical</type>
     <category>history</category>
@@ -1224,7 +1168,7 @@
       <value>.false.</value>
     </values>
   </entry>
-
+<!--
   <entry id="histaux_l2x1yrg">
     <type>logical</type>
     <category>history</category>
@@ -1355,7 +1299,7 @@
       <value>.true.</value>
     </values>
   </entry>
-
+-->
   <entry id="drv_threading" modify_via_xml="DRV_THREADING">
     <type>logical</type>
     <category>performance</category>
@@ -1417,7 +1361,6 @@
     </desc>
     <values>
       <value>$EPS_AGRID</value>
-      <value atm_grid="ne0np4_northamericax4v1">3.e-10</value>
     </values>
   </entry>
 
@@ -1470,20 +1413,6 @@
     </desc>
     <values>
       <value>$EPS_OAREA</value>
-    </values>
-  </entry>
-
-  <entry id="iop_mode" modify_via_xml="IOP_MODE">
-    <type>logical</type>
-    <category>seq_infodata_inparm</category>
-    <group>seq_infodata_inparm</group>
-    <desc>
-      turns on Intensive Observation Period (IOP) mode, a planet covered
-      with homogenous surface and forced identically with a forcing file,
-      set by IOP_MODE in env_case.xml, default: false
-    </desc>
-    <values>
-      <value>$IOP_MODE</value>
     </values>
   </entry>
 
@@ -1540,7 +1469,7 @@
       <value>.false.</value>
     </values>
   </entry>
-
+<!--
   <entry id="reprosum_allow_infnan">
     <type>logical</type>
     <category>reprosum</category>
@@ -1553,7 +1482,7 @@
       <value>.false.</value>
     </values>
   </entry>
-
+-->
   <entry id="reprosum_diffmax">
     <type>real</type>
     <category>reprosum</category>
@@ -1659,7 +1588,7 @@
       associated with NCPL coupling frequency, nad has valid values: hour,day,year,decade
     </desc>
   </entry>
-
+<!--
   <entry id="glc_avg_period" modify_via_xml="GLC_AVG_PERIOD">
     <type>char</type>
     <category>time</category>
@@ -1680,7 +1609,7 @@
       done exactly when the GLC is called (governed by GLC_NCPL).
     </desc>
   </entry>
-
+-->
   <entry id="wav_cpl_dt" modify_via_xml="WAV_NCPL" skip_default_entry="true">
     <type>integer</type>
     <category>time</category>
@@ -1693,7 +1622,24 @@
       associated with NCPL coupling frequency, nad has valid values: hour,day,year,decade
     </desc>
   </entry>
-
+<!--
+  <entry id="esp_cpl_dt" skip_default_entry="true">
+    <type>integer</type>
+    <category>time</category>
+    <group>seq_timemgr_inparm</group>
+    <desc>
+      esp run interval in seconds
+      esp_cpl_dt is the number of times the esp is run per NCPL_BASE_PERIOD
+      NCPL_BASE_PERIOD is set in env_run.xml and is the base period
+      associated with NCPL coupling frequency, nad has valid values: hour,day,year,decade
+      default value set by buildnml to be the pause interval if pause is active
+      otherwise, it is set to the shortest component coupling time
+    </desc>
+    <values>
+      <value>-999</value>
+    </values>
+  </entry>
+-->
   <entry id="atm_cpl_offset">
     <type>integer</type>
     <category>time</category>
@@ -1765,7 +1711,37 @@
       <value>0</value>
     </values>
   </entry>
+<!--
+  <entry id="esp_cpl_offset">
+    <type>integer</type>
+    <category>time</category>
+    <group>seq_timemgr_inparm</group>
+    <desc>
+      esp coupling interval offset in seconds default: 0
+    </desc>
+    <values>
+      <value>0</value>
+    </values>
+  </entry>
 
+  <entry id="esp_run_on_pause" modify_via_xml="ESP_RUN_ON_PAUSE">
+    <type>logical</type>
+    <category>time</category>
+    <group>seq_timemgr_inparm</group>
+    <desc>
+      true => ESP component runs after driver 'pause cycle' If any
+      component 'pauses' (see PAUSE_OPTION,
+      PAUSE_N and DATA_ASSIMILATION_XXX XML
+      variables), the ESP component (if present) will be run to
+      process the component 'pause' (restart) files and set any
+      required 'resume' signals.  If true, esp_cpl_dt and
+      esp_cpl_offset settings are ignored.  default: true
+    </desc>
+    <values>
+      <value>.true.</value>
+    </values>
+  </entry>
+-->
   <entry id="calendar" modify_via_xml="CALENDAR">
     <type>char</type>
     <category>time</category>
@@ -1990,7 +1966,7 @@
       <value>$HIST_DATE</value>
     </values>
   </entry>
-
+<!--
   <entry id="histavg_option" modify_via_xml="HISTAVG_OPTION">
     <type>char</type>
     <category>time</category>
@@ -2083,7 +2059,7 @@
       <value>$BARRIER_DATE</value>
     </values>
   </entry>
-
+-->
   <entry id="tprof_option">
     <type>char</type>
     <category>time</category>
@@ -2133,7 +2109,7 @@
       <value>-999</value>
     </values>
   </entry>
-
+<!--
   <entry id="pause_option" modify_via_xml="PAUSE_OPTION">
     <type>char</type>
     <category>time</category>
@@ -2264,7 +2240,7 @@
       <value>$PAUSE_ACTIVE_LND</value>
     </values>
   </entry>
-
+-->
   <entry id="logfilepostfix">
     <type>char</type>
     <category>driver</category>
@@ -2780,7 +2756,72 @@
       <value>$NINST_ROF_LAYOUT</value>
     </values>
   </entry>
+<!--
+  <entry id="esp_ntasks" modify_via_xml="NTASKS_ESP">
+    <type>integer</type>
+    <category>cime_pes</category>
+    <group>cime_pes</group>
+    <desc>
+      the number of mpi tasks assigned to the esp components.
+      set by NTASKS_ESP in env_configure.xml.
+    </desc>
+    <values>
+      <value>$NTASKS_ESP</value>
+    </values>
+  </entry>
 
+  <entry  id="esp_nthreads" modify_via_xml="NTHRDS_ESP">
+    <type>integer</type>
+    <category>cime_pes</category>
+    <group>cime_pes</group>
+    <desc>
+      the number of threads per mpi task for the esp component.
+      set by NTHRDS_ESP in env_configure.xml.
+    </desc>
+    <values>
+      <value>$NTHRDS_ESP</value>
+    </values>
+  </entry>
+
+  <entry  id="esp_rootpe" modify_via_xml="ROOTPE_ESP">
+    <type>integer</type>
+    <category>cime_pes</category>
+    <group>cime_pes</group>
+    <desc>
+      the global mpi task rank of the root processor assigned to the esp component.
+      set by ROOTPE_ESP in env_configure.xml.
+    </desc>
+    <values>
+      <value>$ROOTPE_ESP</value>
+    </values>
+  </entry>
+
+  <entry  id="esp_pestride" modify_via_xml="PSTRID_ESP">
+    <type>integer</type>
+    <category>cime_pes</category>
+    <group>cime_pes</group>
+    <desc>
+      the mpi global processors stride associated with the mpi tasks for the esp component.
+      set by PSTRID_ESP in env_configure.xml.
+    </desc>
+    <values>
+      <value>$PSTRID_ESP</value>
+    </values>
+  </entry>
+
+  <entry  id="esp_layout" modify_via_xml="NINST_ESP_LAYOUT">
+    <type>char</type>
+    <category>cime_pes</category>
+    <group>cime_pes</group>
+    <valid_values>concurrent,sequential</valid_values>
+    <desc>
+      Layout of multi-instance external system processor (if there are more than 1)
+    </desc>
+    <values>
+      <value>$NINST_ESP_LAYOUT</value>
+    </values>
+  </entry>
+-->
   <entry  id="cpl_ntasks" modify_via_xml="NTASKS_CPL">
     <type>integer</type>
     <category>cime_pes</category>
@@ -2832,13 +2873,13 @@
       <value>$PSTRID_CPL</value>
     </values>
   </entry>
-
+<!--
   <entry id="info_taskmap_model">
     <type>integer</type>
     <category>cime_pes</category>
     <group>cime_pes</group>
     <desc>
-      level of task-to-node mapping output for the whole model 
+      level of task-to-node mapping output for the whole model
       (0: no output; 1: compact; 2: verbose)
     </desc>
     <values>
@@ -2858,37 +2899,7 @@
       <value>$INFO_TASKMAP_COMP</value>
     </values>
   </entry>
-
-  <entry id="info_mprof">
-    <type>integer</type>
-    <category>cime_pes</category>
-    <group>cime_pes</group>
-    <desc>
-      Sets level of memory profile logging:
-      0: no output
-      1: log mem-usage from component ROOTPE tasks
-      2: log mem-usage from all tasks
-      3: aggregate logging to node-level mem-usage on ROOTPE nodes
-      4: aggregate logging to node-level mem-usage on all nodes
-      Aggregation requires info_taskmap_model>0.
-    </desc>
-    <values>
-      <value>$INFO_MPROF</value>
-    </values>
-  </entry>
-
-  <entry id="info_mprof_dt">
-    <type>integer</type>
-    <category>cime_pes</category>
-    <group>cime_pes</group>
-    <desc>
-      number of seconds between memory profiling logs
-    </desc>
-    <values>
-      <value>$INFO_MPROF_DT</value>
-    </values>
-  </entry>
-
+-->
   <!-- =========================== -->
   <!-- group prof_inparm           -->
   <!--  in perf_mod.F90            -->
@@ -3728,66 +3739,6 @@
     </values>
   </entry>
 
-  <entry id="atm2rof_fmapname"    modify_via_xml="ATM2ROF_FMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      atm to runoff flux mapping file
-    </desc>
-    <values>
-      <value>$ATM2ROF_FMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="atm2rof_fmaptype"    modify_via_xml="ATM2ROF_FMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$ATM2ROF_FMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
-  <entry id="atm2rof_smapname"    modify_via_xml="ATM2ROF_SMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      atm to runoff state mapping file
-    </desc>
-    <values>
-      <value>$ATM2ROF_SMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="atm2rof_smaptype"    modify_via_xml="ATM2ROF_SMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$ATM2ROF_SMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
   <entry id="rof2ocn_fmapname"    modify_via_xml="ROF2OCN_FMAPNAME">
     <type>char</type>
     <category>mapping</category>
@@ -3814,66 +3765,6 @@
     </desc>
     <values>
       <value>$ROF2OCN_FMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ocn_fmapname"    modify_via_xml="GLC2OCN_FMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      glc to ocn flux mapping file for fluxes
-    </desc>
-    <values>
-      <value>$GLC2OCN_FMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ocn_fmaptype"    modify_via_xml="GLC2OCN_FMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$GLC2OCN_FMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ocn_smapname"    modify_via_xml="GLC2OCN_SMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      glc to ocn state mapping file for states
-    </desc>
-    <values>
-      <value>$GLC2OCN_SMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ocn_smaptype"    modify_via_xml="GLC2OCN_SMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$GLC2OCN_SMAPTYPE</value>
       <value bfbflag="on">X</value>
     </values>
   </entry>
@@ -3938,66 +3829,6 @@
     </values>
   </entry>
 
-  <entry id="ocn2glc_fmapname"    modify_via_xml="OCN2GLC_FMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      ocn to glc flux mapping file for fluxes
-    </desc>
-    <values>
-      <value>$OCN2GLC_FMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="ocn2glc_fmaptype"    modify_via_xml="OCN2GLC_FMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$OCN2GLC_FMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
-  <entry id="ocn2glc_smapname"    modify_via_xml="OCN2GLC_SMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      ocn to glc state mapping file for states
-    </desc>
-    <values>
-      <value>$OCN2GLC_SMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="ocn2glc_smaptype"    modify_via_xml="OCN2GLC_SMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$OCN2GLC_SMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
   <entry id="glc2ice_rmapname"    modify_via_xml="GLC2ICE_RMAPNAME">
     <type>char</type>
     <category>mapping</category>
@@ -4027,7 +3858,67 @@
       <value bfbflag="on">X</value>
     </values>
   </entry>
+<!--
+  <entry id="rof2ocn_liq_rmapname"    modify_via_xml="ROF2OCN_LIQ_RMAPNAME">
+    <type>char</type>
+    <category>mapping</category>
+    <input_pathname>abs</input_pathname>
+    <group>seq_maps</group>
+    <desc>
+      runoff to ocn nearest neighbor plus smoothing conservative mapping file
+    </desc>
+    <values>
+      <value>$ROF2OCN_LIQ_RMAPNAME</value>
+    </values>
+  </entry>
 
+  <entry id="rof2ocn_liq_rmaptype"    modify_via_xml="ROF2OCN_LIQ_RMAPTYPE">
+    <type>char</type>
+    <category>mapping</category>
+    <group>seq_maps</group>
+    <desc>
+      The type of mapping desired, either "source" or "destination" mapping.
+      X is associated with rearrangement of the source grid to the
+      destination grid and then local mapping.  Y is associated with mapping
+      on the source grid and then rearrangement and sum to the destination
+      grid.
+    </desc>
+    <values>
+      <value>$ROF2OCN_LIQ_RMAPTYPE</value>
+      <value bfbflag="on">X</value>
+    </values>
+  </entry>
+
+  <entry id="rof2ocn_ice_rmapname"    modify_via_xml="ROF2OCN_ICE_RMAPNAME">
+    <type>char</type>
+    <category>mapping</category>
+    <input_pathname>abs</input_pathname>
+    <group>seq_maps</group>
+    <desc>
+      runoff to ocn nearest neighbor plus smoothing conservative mapping file
+    </desc>
+    <values>
+      <value>$ROF2OCN_ICE_RMAPNAME</value>
+    </values>
+  </entry>
+
+  <entry id="rof2ocn_ice_rmaptype"    modify_via_xml="ROF2OCN_ICE_RMAPTYPE">
+    <type>char</type>
+    <category>mapping</category>
+    <group>seq_maps</group>
+    <desc>
+      The type of mapping desired, either "source" or "destination" mapping.
+      X is associated with rearrangement of the source grid to the
+      destination grid and then local mapping.  Y is associated with mapping
+      on the source grid and then rearrangement and sum to the destination
+      grid.
+    </desc>
+    <values>
+      <value>$ROF2OCN_ICE_RMAPTYPE</value>
+      <value bfbflag="on">X</value>
+    </values>
+  </entry>
+-->
   <entry id="rof2ocn_rmapname"    modify_via_xml="ROF2OCN_RMAPNAME">
     <type>char</type>
     <category>mapping</category>
@@ -4178,66 +4069,6 @@
     </values>
   </entry>
 
-  <entry id="glc2ice_fmapname"    modify_via_xml="GLC2ICE_FMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      glc to ice flux mapping file for fluxes
-    </desc>
-    <values>
-      <value>$GLC2ICE_FMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ice_fmaptype"    modify_via_xml="GLC2ICE_FMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$GLC2ICE_FMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ice_smapname"    modify_via_xml="GLC2ICE_SMAPNAME">
-    <type>char</type>
-    <category>mapping</category>
-    <input_pathname>abs</input_pathname>
-    <group>seq_maps</group>
-    <desc>
-      glc to ice state mapping file for states
-    </desc>
-    <values>
-      <value>$GLC2ICE_SMAPNAME</value>
-    </values>
-  </entry>
-
-  <entry id="glc2ice_smaptype"    modify_via_xml="GLC2ICE_SMAPTYPE">
-    <type>char</type>
-    <category>mapping</category>
-    <group>seq_maps</group>
-    <desc>
-      The type of mapping desired, either "source" or "destination" mapping.
-      X is associated with rearrangement of the source grid to the
-      destination grid and then local mapping.  Y is associated with mapping
-      on the source grid and then rearrangement and sum to the destination
-      grid.
-    </desc>
-    <values>
-      <value>$GLC2ICE_SMAPTYPE</value>
-      <value bfbflag="on">X</value>
-    </values>
-  </entry>
-
   <entry id="atm2wav_smapname"    modify_via_xml="ATM2WAV_SMAPNAME">
     <type>char</type>
     <category>mapping</category>
@@ -4369,12 +4200,10 @@
       components that need to look at the same data.
     </desc>
     <values>
-      <value cime_model='cesm'>Buildconf/camconf/drv_flds_in,Buildconf/clmconf/drv_flds_in</value>
-      <value cime_model='ihesp'>Buildconf/camconf/drv_flds_in,Buildconf/clmconf/drv_flds_in</value>
-      <value cime_model='e3sm'>Buildconf/eamconf/drv_flds_in,Buildconf/elmconf/drv_flds_in</value>
+      <value>Buildconf/camconf/drv_flds_in,Buildconf/clmconf/drv_flds_in</value>
     </values>
   </entry>
-
+<!--
   <entry id="data_assimilation_atm" modify_via_xml="DATA_ASSIMILATION_ATM">
     <type>logical</type>
     <category>data_assimilation</category>
@@ -4470,43 +4299,5 @@
       <value>$DATA_ASSIMILATION_LND</value>
     </values>
   </entry>
-
-  <entry id="seq_flux_mct_albdif">
-    <type>real</type>
-    <category>seq_flux_mct</category>
-    <group>seq_flux_mct_inparm</group>
-    <desc>
-       Surface albedo for diffuse radiation
-    </desc>
-    <values>
-      <value>0.06D0</value>
-      <value aqua_planet_sst_type="sst_aquap_constant">0.07D0</value>
-    </values>
-  </entry>
-
-  <entry id="seq_flux_mct_albdir">
-    <type>real</type>
-    <category>seq_flux_mct</category>
-    <group>seq_flux_mct_inparm</group>
-    <desc>
-       Surface albedo for direct radiation
-    </desc>
-    <values>
-      <value>0.07D0</value>
-    </values>
-  </entry>
-
-  <entry id="seq_flux_atmocn_minwind">
-    <type>real</type>
-    <category>seq_flux_mct</category>
-    <group>seq_flux_mct_inparm</group>
-    <desc>
-       minimum wind speed for atmOcn flux calculations
-    </desc>
-    <values>
-      <value>0.5D0</value>
-      <value aqua_planet_sst_type="sst_aquap_constant">1.0D0</value>
-    </values>
-  </entry>
-
+-->
 </entry_id>
