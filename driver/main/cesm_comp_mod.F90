@@ -3591,7 +3591,7 @@ end subroutine cesm_init
    endif
 
    call t_stopf  ('CPL:FINAL')
-   call t_prf(trim(timing_dir)//'/cesm_timing', mpicom_GLOID)
+   call t_prf(trim(timing_dir)//'/model_timing', mpicom_GLOID)
    call t_finalizef()
 
 end subroutine cesm_final
